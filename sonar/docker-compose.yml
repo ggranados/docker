@@ -2,7 +2,7 @@ version: '2'
 
 services:
   sonarqube:
-    image: sonarqube
+    image: sonarqube:9-community
     ports:
       - "9000:9000"
     networks:
@@ -19,6 +19,9 @@ services:
       
   db:
     image: postgres
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '5432:5432'
     networks:
       - sonarnet
     environment:
